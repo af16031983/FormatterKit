@@ -254,6 +254,8 @@ static inline NSComparisonResult NSCalendarUnitCompareSignificance(NSCalendarUni
         return [self caRelativeDateStringForComponents:components];
     } else if ([languageCode isEqualToString:@"cs"]) {
         return [self csRelativeDateStringForComponents:components];
+    } else if ([languageCode isEqualToString:@"de"]) {
+        return [self deRelativeDateStringForComponents:components];
     } else if ([languageCode isEqualToString:@"es"]) {
         return [self esRelativeDateStringForComponents:components];
     } else if ([languageCode isEqualToString:@"en"]) {
@@ -300,6 +302,30 @@ static inline NSComparisonResult NSCalendarUnitCompareSignificance(NSCalendarUni
         return @"passat demà";
     }
 
+    return nil;
+}
+
+- (NSString *)deRelativeDateStringForComponents:(NSDateComponents *)components {
+    if ([components year] == -1) {
+        return @"letztes Jahr";
+    } else if ([components month] == -1 && [components year] == 0) {
+        return @"letzter Monat";
+    } else if ([components weekOfYear] == -1 && [components year] == 0 && [components month] == 0) {
+        return @"letze Woche";
+    } else if ([components day] == -1 && [components year] == 0 && [components month] == 0 && [components weekOfYear] == 0) {
+        return @"gestern";
+    }
+    
+    if ([components year] == 1) {
+        return @"nächstes Jahr";
+    } else if ([components month] == 1 && [components year] == 0) {
+        return @"nächster Monat";
+    } else if ([components weekOfYear] == 1 && [components year] == 0 && [components month] == 0) {
+        return @"nächste Woche";
+    } else if ([components day] == 1 && [components year] == 0 && [components month] == 0 && [components weekOfYear] == 0) {
+        return @"morgen";
+    }
+    
     return nil;
 }
 
