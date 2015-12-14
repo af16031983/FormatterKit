@@ -31,7 +31,7 @@
 /* Day Unit (Singular)
    Day Unit (Singular, Abbreviated) */
 "day" = "Tag";
-"d" = "T."
+"d" = "T.";
 
 /* Day Unit (Plural)
    Day Unit (Plural, Abbreviated) */
